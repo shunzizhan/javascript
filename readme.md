@@ -46,3 +46,16 @@
 
 >  每个方法都要在每个实例上面重新创建一次
 >  解决办法：把函数定义转移到函数外部
+
+```javascript
+ function Person(name, age, job){
+    this.name= name;
+    this.age= age;
+    this.job = job;
+    this.sayName = sayName;
+  }
+
+  function sayName(){
+    alert(this.name);
+  }
+```
