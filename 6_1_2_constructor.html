@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>构造函数模式</title>
+</head>
+<body>
+
+</body>
+<script>
+  // function Person(name, age, job){
+  //   this.name= name;
+  //   this.age= age;
+  //   this.job = job;
+  //   this.sayName = function(){
+  //     alert(this.name);
+  //   }
+  // }
+  // // 1.将构造函数当做函数
+  // var person1 = new Person("shunzizhan",24,"web前端工程师");
+  // var person2 = new Person("shunzizhan富商大贾",25,"web前端工程师");
+  // person1.sayName();
+  
+  // // 作为普通函数调用
+  // Person("Mark",26,"sgfsgf");
+  // window.sayName();
+
+  // // 在另一个对象的作用域中调用
+  // var o = new Object();
+  // Person.call(o,"shunzizhan",27,"web前端工程师");
+  // o.sayName();
+  
+  // 构造函数存在的问题
+  // function Person(name, age, job){
+  //   this.name= name;
+  //   this.age= age;
+  //   this.job = job;
+  //   this.sayName = new Function("alert(this.name);");
+  // }
+  function Person(name, age, job){
+    this.name= name;
+    this.age= age;
+    this.job = job;
+    this.sayName = sayName;
+  }
+
+  function sayName(){
+    alert(this.name);
+  }
+
+  var person1 = new Person("shunzizhan",24,"web前端工程师");
+  var person2 = new Person("shunzizhan富商大贾",25,"web前端工程师");
+  person1.sayName();
+  person2.sayName();
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>工厂模式</title>
+</head>
+<body>
+
+</body>
+<script>
+  function createPerson(name, age, job) {
+     var o = new Object();
+     o.name = name;
+     o.age = age;
+     o.job = job;
+     o.sayName = function(){
+      alert(this.name);
+     }
+
+     return o;
+  }
+
+  var person1 = createPerson("shunzizhan",24,"web前端工程师");
+  var person2 = createPerson("shunzi",27,"hahha");
+  person1.sayName();
+  person2.sayName();
+</script>
+</html>
