@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>prototype</title>
+</head>
+<body>
+
+</body>
+<script>
+  function Person (argument) {
+    // body...
+  }
+  // Person.prototype.name="shunzizhan";
+  // Person.prototype.age=24;
+  // Person.prototype.job="web前端工程师";
+  // Person.prototype.sayName = function(){
+  //   alert(this.name);
+  // }
+  // 简化的原型语法
+  Person.prototype = {
+    name:"shunzizhan",
+    age:24,
+    job:"web前端工程师",
+    sayName:function(){
+      alert(this.name);
+    }
+  }
+
+  function hasPrototypeProperty(object,name) { 
+    return !object.hasOwnProperty(name) && (name in object); 
+  } 
+
+  // var person1 = new Person();
+  // person1.sayName();
+  var person2 = new Person();
+  // hasOwnProperty
+  alert("hasOwnProperty>>"+person2.hasOwnProperty("name"));
+  // in
+  alert("in>>"+"name" in person2);
+  // hasPrototypeProperty
+  alert("hasPrototypeProperty>>"+ hasPrototypeProperty(person2,"name"));
+
+  person2.sayName();
+
+  var person3 = new Person();
+  person3.name="shunzizhan大大"; //现在实例中寻找sayName属性，再在原型中寻找sayName
+  // 通过hasOwnProperty就知道属性是不是实例的属性
+  alert("hasOwnProperty>>"+person3.hasOwnProperty("name"));
+  // in操作符只要通过对象能够访问到属性就返回true，hasOwnProtoperty()只有在属性存在于实例中才返回true
+  alert("in>>"+"name" in person3);
+  // hasPrototypeProperty
+  alert("hasPrototypeProperty>>"+hasPrototypeProperty(person3,"name"));
+  person3.sayName();
+
+
+  
+
+</script>
+</html>

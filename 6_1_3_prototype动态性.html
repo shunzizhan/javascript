@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>prototype</title>
+</head>
+<body>
+
+</body>
+<script>
+  function Person (argument) {
+    // body...
+  }
+  
+  var person1 = new Person();
+  Person.prototype.sayName = function(){
+    alert("shunzizhan");
+  }
+
+ 
+  person1.sayName();
+  
+
+  String.prototype.startWith=function(text){
+    return this.indexOf(text)==0;
+  }
+  var msg ="hello world";
+  alert(msg.startWith('hell'));
+  // // 注意，如果是重写整个原型对象，调用指针会指向最初的原型对象的_proto_指针
+  // function Person (argument) {
+  //   // body...
+  // }
+  
+  // var person1 = new Person();
+  // Person.prototype = {
+  //   name:"shunzizhan",
+  //   age:24,
+  //   job:"web前端开发",
+  //   sayName:function(){
+  //     alert(this.name);
+  //   }
+  // }
+  // person1.sayName();//error
+
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>prototype</title>
+</head>
+<body>
+
+</body>
+<script>
+  function Person (argument) {
+    // body...
+  }
+  
+  
+  Person.prototype = {
+    name:"shunzizhan",
+    age:24,
+    job:"web前端开发",
+    friends:['a','b'],
+    sayName:function(){
+      alert(this.name);
+    }
+  }
+  var person1 =new Person();
+  var person2 =new Person();
+  person2.friends.push('c');
+  alert(person1.friends.join("|"));
+  alert(person2.friends.join("|"));
+
+</script>
+</html>
