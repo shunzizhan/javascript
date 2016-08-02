@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>灵活的语言</title>
+</head>
+<body>
+
+</body>
+<script>
+  // 1.1
+  function a(){
+    console.log('我是练习');
+  }
+  function b(){
+    console.log('我是练习2');
+  }
+
+  // 1.2 d 全局，覆盖
+  var a = function(){
+    console.log('我是练习');
+  }
+  var b = function(){
+    console.log('我是练习2');
+  }
+
+  // 1.3
+  var obj = {
+    a:function(){
+      console.log('我是练习');
+    },
+    b:function(){
+      console.log('我是练习2');
+    }
+  }
+
+  // 1.4
+  var obj1 = function(){};
+  obj1.a = function(){
+    console.log('我是练习');
+  }
+  obj1.b = function(){
+    console.log('我是练习2');
+  }
+  obj1.a();
+
+  // 1.5 真假对象
+  var obj2 = function(){
+    return {
+      a:function(){
+        console.log('真假对象a');
+      },
+      b:function(){
+        console.log('真假对象b');
+      }
+    }
+  }
+  var t = obj2();
+  t.b();
+
+  // 1.6 类
+  var obj3 = function(){
+    this.a = function(){
+      console.log('类a');
+    }
+    this.b = function(){
+      console.log('类b');
+    }
+  }
+  var s = new obj3();
+  s.a();
+
+  // 1.7 检测类
+  // var s1 = new obj3();
+  // s1.prototype.a = function(){
+  //   console.log('检测类a');
+  // }//失败
+  var obj4 = function(){};
+  obj4.prototype.a=function(){
+    console.log('检测类a');
+  }
+  obj4.prototype.b=function(){
+    console.log('检测类b');
+  }
+  var w = new obj4();
+  w.a();
+  // 等价于
+  var obj4s = function(){};
+  obj4s.prototype = {
+    a:function(){
+      console.log('检测类as');
+    },
+    b:function(){
+      console.log('检测类bs');
+    }
+  }
+  var ws = new obj4s();
+  ws.a();
+
+
+  // 1.8 链式
+  var obj5 = {
+    a:function(){
+      console.log('链式a');
+      return this;
+    },
+    b:function(){
+      console.log('链式b');
+      return this;
+    }
+  }
+  obj5.a().b();
+  // 等价于
+  var obj5s = function(){};
+  obj5s.prototype={
+    a:function(){
+      console.log('链式as');
+      return this;
+    },
+    b:function(){
+      console.log('链式bs');
+      return this;
+    }
+  }
+  var z = new obj5s();
+  z.a().b();
+
+  // 1.9 函数的祖先 会污染原生 不建议
+  Function.prototype.a=function(){
+    console.log('原生扩展a');
+  }
+  var f = function(){};
+  f.a();
+  // =>>抽象一个方法
+  Function.prototype.addMethod = function(name,fn){
+    this[name]=fn;
+  }
+  var method = function(){};
+  method.addMethod('a',function(){
+    console.log('抽象扩展原生~a');
+  })
+  method.addMethod('b',function(){
+    console.log('抽象扩展原生~b');
+  })
+  method.a();
+
+  // 1.10 链式扩展
+  Function.prototype.addMethods = function(name,fn){
+    this[name]=fn;
+    return this;
+  }
+  var obj6 = function(){};
+  // 链式添加 则不需renturn this
+  // 链式使用，则需要renturn this
+  obj6.addMethods('a',function(){
+    console.log('链式扩展原生~a');
+    return this;
+  }).addMethods('b',function(){
+    console.log('链式扩展原生~b');
+    return this;
+  })
+  obj6.a().b();
+
+  // 1.11 类式扩展
+  Function.prototype.sp = function(name,fn){
+    this.prototype[name] = fn;
+    return this;
+  }
+  var obj7 = function(){};
+  obj7.sp('a',function(){
+    console.log('类式扩展原生~a');
+    return this;
+  }).sp('b',function(){
+    console.log('类式扩展原生~b');
+    return this;
+  })
+  var m = new obj7();
+  m.a().b();
+</script>
+</html>
