@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>灵活的语言</title>
+</head>
+<body>
+
+</body>
+<script>
+  // 2.1
+  var Book = function(id,bookname,price){
+    this.id = id;
+    this.bookname = bookname;
+    this.price = price;
+  }
+  Book.prototype = {
+    display:function(){
+      alert(this.id);
+    },
+    s:10
+  }
+  var book = new Book(10,"shunzizhan",35);
+  console.log(book.bookname);
+
+  // 2.2   私有属性与私有方法，特权方法，对象公有属性和对象共有方法，构造器
+  console.log('2.2   私有属性与私有方法，特权方法，对象公有属性和对象共有方法，构造器');
+  var Book2 = function(id,bookname,price){
+    // 私有属性
+    var num =1;
+    // 私有方法
+    function checkId(){
+
+    }
+    // 特权方法
+    this.getName = function(){}
+    this.getPrice = function(){
+
+    }
+    this.setName =function(){}
+    this.setPrice =function(){}
+    // 对象公有属性
+    this.id = id;
+    // 对象共有方法
+    this.copy =function(){}
+    // 构造器
+    this.setName(bookname);
+    this.setPrice(price);
+  }
+
+  // 静态类公有属性（对象不能访问）
+  Book2.isChinese = true;
+  // 静态类公有方法（对象不能访问）
+  Book2.resetTime = function(){
+    console.log("2.2ashsfhskfhs");
+  }
+
+  Book2.prototype = {
+    // 公有属性
+    isJsBook :false,
+    // 公有方法
+    display:function(){}
+  }
+  var b= new Book2(11,"shunzizhan2",35);
+  console.log(b.num);
+  console.log(b.isJsBook);
+  console.log(b.id);
+  console.log(b.isChinese);
+  console.log(Book2.isChinese);
+  Book2.resetTime();
+</script>
+</html>
