@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+</body>
+<script>
+ 
+  // \b单词边界
+  var str = 'This is a dog He is a boy',
+  new_str = str.replace(/\bis\b/g,'IS');
+  alert(str+">>>>"+new_str);
+
+  var Reg = new RegExp('\\bis\\b','g');
+  var str = 'This is a dog He is a boy',
+  new_str = str.replace(Reg,'IS');
+  alert(str+">>>>"+new_str);
+
+
+
+  // 去掉http协议的jpg文件的协议头
+  // http://baidu.com/1.jpg
+  // https://baidu.com/1.jpg
+  // http://baidu.com/1.png
+  // https://baidu.com/1.png
+  // 
+  // reg http:(\/\/.+\.jpg)
+  var  http_str = 'http://baidu.com/1.jpg';
+  http_str.replace(/http:(\/\/.+\.jpg)/,$1);
+  alert(http_str);
+
+  // exec
+  var reg = /\d(\w)\d/;
+  var reg1 = /\d(\w)\d/g;
+  var ts = 's1az2bb3cy4dd5ee'
+  var ret = reg.exec(ts);
+  console.log(reg.lastIndex + '\t' + ret[0] + '\t' + ret.toString())
+
+  'a1b2c3d4'.replace(/\d/g,function(childstr,index,str){
+  return parseInt(childstr)+1;
+  })
+</script>
+</html>
