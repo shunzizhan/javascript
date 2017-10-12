@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<li><img src="/static/img/none.jpg" alt=""></li>
+	<li><img src="/static/img/none.jpg" alt=""></li>
+	<li><img src="/static/img/none.jpg" alt=""></li>
+	<li><img src="/static/img/none.jpg" alt=""></li>
+	<script>
+	var o = {
+		x:1,
+		y:2,
+		z:{
+			x:1,
+			y:2,
+			toJSON:function(){
+				return this.x+this.y
+			}
+		}
+	}
+	console.log(JSON.stringify(o))
+	</script>
+</body>
+</html>
