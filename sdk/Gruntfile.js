@@ -20,9 +20,7 @@ module.exports = function(grunt) {
             '<%= dirs.src%>/js/lib/tool/*.js',
             '<%= dirs.src%>/js/lib/glDatePicker/glDatePicker.js'
           ],
-           '<%= dirs.dest%>/js/lib/localSdk.js': 
-           ['<%= dirs.src%>/js/lib/localSdk.js'
-          ],
+          '<%= dirs.dest%>/js/lib/localSdk.js': ['<%= dirs.src%>/js/lib/localSdk.js'],
           '<%= dirs.dest%>/js/lib/core.js': '<%= dirs.src%>/js/lib/core.js',
           '<%= dirs.dest%>/js/lib/log.js': '<%= dirs.src%>/js/lib/log.js',
           '<%= dirs.dest%>/js/lib/report.js': '<%= dirs.src%>/js/lib/report.js',
@@ -206,8 +204,7 @@ module.exports = function(grunt) {
             '<%= dirs.src%>/css/page/publish-trip.less',
             '<%= dirs.src%>/css/widget/publish-trip/*.less'
           ],
-          '<%= dirs.dest%>/css/index/index2.less': 
-          ['<%= dirs.src%>/css/common/*.less',
+          '<%= dirs.dest%>/css/index/index2.less': ['<%= dirs.src%>/css/common/*.less',
             '<%= dirs.src%>/css/page/index.less',
             '<%= dirs.src%>/css/widget/index/*.less'
           ],

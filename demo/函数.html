@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	function add(c,d){
+		return this.a + this.b + c + d;
+	}
+	var o = {a:1,b:2};
+
+	var t1 = add.call(o,3,4);
+	console.log('t1',t1)
+
+	var t2 = add.apply(o,[3,4]);
+	console.log('t2',t2)
+
+
+	this.x = 9;
+	var module = {
+		x:81,
+		getX:function(){
+			return this.x;
+		}
+	}
+	var t3 = module.getX();
+	console.log('t3',t3);
+
+	var getX = module.getX;
+	var t4 = getX();
+	console.log('t4',t4);
+
+	var getY = module;
+	var t6 = getY.getX();
+	console.log('t6',t6); //81
+	
+	// var getZ = {};
+	var bindgetx = getX.bind(module);
+	var t5 = bindgetx();
+	console.log('t5',t5);
+
+
+	/******************bind********************/ 
+	function add2(a,b,c){
+		return a + b + c;
+	}
+	var fun = add2.bind(undefined,100);
+	var t7 = fun(1,2)
+	console.log('t7',t7);
+
+	var fun2 = fun.bind(undefined,200);
+	var t8 = fun2(10)
+	console.log('t8',t8);
+
+	for(var i=1;i<4;i++){
+		console.log(i);
+	}
+	</script>
+</body>
+</html>

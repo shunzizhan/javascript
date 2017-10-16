@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	function outer2(){
+		var local = 2;
+		console.log('1',local);
+		function outer1(){
+			var local = 1;
+			console.log('2',local);
+		}
+		outer1();
+	}
+	var local = 3;
+	console.log('0',local);
+	outer2();
+	</script>
+</body>
+</html>
