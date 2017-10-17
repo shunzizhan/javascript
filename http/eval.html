@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	var obj = '{"data":[{"name":"张三","age":30},{"name":"李四","age":27}]}';
+	var t1 = eval('(' + obj + ')');
+	alert(t1.data[0].age); // 30
+	var t2 = JSON.parse(obj);
+	alert(t2.data[0].age); // 30
+
+	var obj1 = '{"data":[{"name":"张三","age":alert(123)},{"name":"李四","age":27}]}';
+	var t3 = eval('(' + obj1 + ')');
+	alert(t3.data[0].age); // 123 undefind
+	var t4 = JSON.parse(obj1);
+	alert(t4.data[0].age); // Unexpected token a in JSON at position 28
+
+  var arr = [{"name":"张三","age":32},{"name":"李四","age":27}];
+  var t5 = JSON.stringify(arr);
+  alert(t5); // "[{"name":"张三","age":32},{"name":"李四","age":27}]"
+
+  var txtobj = {
+  	'1':'ss',
+  	'2':'bb',
+  	'3':'cc'
+  }
+  for(item in txtobj){
+  	console.log(item,txtobj[item])
+  }
+	</script>
+</body>
+</html>
