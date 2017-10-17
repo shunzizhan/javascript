@@ -14,7 +14,7 @@
 - status:由服务器返回的 HTTP 状态代码，如 200 表示成功，而 404 表示Not Found错误。当 readyState 小于 3 的时候读取这一属性会导致一个异常。
 - statusText:这个属性用名称而不是数字指定了请求的 HTTP 的状态代码。也就是说，当状态为 200 的时候它是 OK，当状态为 404 的时候它是Not Found。和 status 属性一样，当 readyState 小于 3 的时候读取这一属性会导致一个异常。
 - readyState:HTTP 请求的状态.当一个 XMLHttpRequest 初次创建时，这个属性的值从 0 开始，直到接收到完整的 HTTP 响应，这个值增加到 4
-	- 0: 初始化状态。XMLHttpRequest 对象已创建或已被 abort() 方法重置
+	- 0: 初始化状态。XMLHttpRequest 对象已创建或已被 abort() 方法重置 
 	- 1: open() 方法已调用，但是 send() 方法未调用。请求还没有被发送。
 	- 2：Send() 方法已调用，HTTP 请求已发送到 Web 服务器。未接收到响应。
 	- 3：所有响应头部都已经接收到。响应体开始接收但未完成。
