@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  * {
+    font-size: 30px;
+  }
+  </style>
+</head>
+
+<body>
+  <p>原始日期：
+    <br/>2017-10-19T14:51:52</p>
+  <p id="test"></p>
+  <p id="test2"></p>
+  <p id="test3"></p>
+  <p id="test4"></p>
+  <script>
+  Date.prototype.Format = function(c) {
+    var o = {
+      "M+": this.getMonth() + 1,
+      "d+": this.getDate(),
+      "h+": this.getHours(),
+      "m+": this.getMinutes(),
+      "s+": this.getSeconds(),
+      "q+": Math.floor((this.getMonth() + 3) / 3),
+      S: this.getMilliseconds()
+    };
+    /(y+)/.test(c) && (c = c.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length)));
+    for (var a in o) new RegExp("(" + a + ")").test(c) && (c = c.replace(RegExp.$1, 1 == RegExp.$1.length ? o[a] : ("00" + o[a]).substr(("" + o[a]).length)));
+    return c
+  };
+
+  var getDate = function(d) {
+    return "number" != typeof d && (d = 1e3 * parseInt(d)), d ? new Date(d).Format("yyyy-MM-dd hh:mm:ss") : "0000-00-00 00:00:00"
+  }
+
+  function fixDate(strTime) {
+    if (!strTime) {
+      return '';
+    }
+    var tempDate = new Date(strTime + '0800');
+    if (tempDate == 'Invalid Date') {
+      strTime = strTime.replace(/T/g, ' ');
+      strTime = strTime.replace(/-/g, '/');
+      tempDate = new Date(strTime + '+0800');
+    }
+    tempDate.toLocaleDateString();
+    return tempDate;
+  }
+
+  var t = new Date('2017-10-19T14:51:52+0800');
+  var t2 = getDate(t.getTime());
+  var t4 = 1508484226325;
+  var t5 = fixDate('2017-10-19T14:51:52');
+  document.getElementById('test').innerHTML = '时间格式化t:<br/>' + t + "<br>t2 ios:" + new Date(t5);
+  document.getElementById('test2').innerHTML = '时间格式化成时间戳再转换t2:<br/>' + t2 + "<br>t2 ios:" + t5;
+  document.getElementById('test3').innerHTML = '时间-当前系统时间:<br/>' + new Date();
+  document.getElementById('test4').innerHTML = '时间-通过时间戳格式化的时间:2017-10-20 15:23:46<br/>' + getDate(t4);
+  </script>
+</body>
+
+</html>

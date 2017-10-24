@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  var arr1 = ['a', 'b', '1', '2'];
+  // for(var i=0;i<arr.length;i++){
+  // 	return arr[i] + arr.splice(2,1)
+  // }
+  var getItem = function(arr) {
+  	var temp = arr;
+    for (var i = 0; i < arr.length; i++) {
+    	// var temp = arr[i]
+    	// arr.splice(i, 1)
+      return temp.splice(i, 1) + getItem(arr)
+    }
+  }
+  console.log(getItem(arr1))
+  </script>
+</body>
+
+</html>

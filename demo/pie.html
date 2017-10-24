@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Insert title here</title>
+  <script language="javascript" type="text/javascript" src="http://people.iola.dk/olau/flot/jquery.js"></script>
+  <script language="javascript" type="text/javascript" src="http://people.iola.dk/olau/flot/jquery.flot.js"></script>
+  <script language="javascript" type="text/javascript" src="http://people.iola.dk/olau/flot/jquery.flot.pie.js"></script>
+  <script type="text/javascript">
+  $(function() {
+
+    var data = [
+      { label: "苹果", data: 10 },
+      { label: "香蕉", data: 30 },
+      { label: "西瓜", data: 90 },
+      { label: "葡萄", data: 70 },
+      { label: "柑橘", data: 80 },
+      { label: "菠萝", data: 110 }
+    ];
+
+
+
+    $.plot($("#pie4"), data, {
+      series: {
+        pie: {
+          show: true,
+          innerRadius: 0.5,
+          stroke: { width: 0 },
+          label: {
+            show: true,
+            threshold: 0.05,
+            // radius: 3 / 4,
+            formatter: function(label, series) {
+              return '<div style="font-size:8pt;text-align:center;padding:2px;">' + label + '<br/>' + Math.round(series.datapoints.points[1]) + '</div>';
+            }
+          }
+        },
+        // colors: ['{{app.color.primary}}', '{{app.color.info}}', '{{app.color.success}}', '{{app.color.warning}}', '{{app.color.danger}}'],
+        grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#ccc' },
+        tooltip: true,
+        tooltipOpts: { content: '%s: %p.0%' }
+      }
+    });
+
+    // $.plot($("#pie4"), data,   
+    // {  
+    //     series: {  
+    //         pie: {   
+    //             show: true  
+    //         }  
+    //     },  
+    //     grid: {  
+    //         hoverable: true,  
+    //         clickable: true  
+    //     }  
+    // });  
+
+    // $("#pie4").bind("plothover", pieHover);  
+    // $("#pie4").bind("plotclick", pieClick);  
+
+
+
+
+  });
+
+
+  function pieHover(event, pos, obj) {
+    if (!obj)
+      return;
+    // percent = parseFloat(obj.series.percent).toFixed(2);
+    $("#hover").html('<span style="font-weight: bold; color: ' + obj.series.color + '">' + obj.series.label + ' (' + obj.series.datapoints.points[1] + ')</span>');
+  }
+
+  function pieClick(event, pos, obj) {
+    if (!obj)
+      return;
+    percent = parseFloat(obj.series.percent).toFixed(2);
+    alert('' + obj.series.label + ': ' + percent + '%');
+  }
+
+  {
+    status: 1,
+    msg: "成功",
+    data: [{ botId: 1, name: "测试数据1" }, { botId: 2, name: "测试数据1" }]
+  }
+  // or
+  {
+    status: 1,
+    msg: "成功",
+    data: { botId: 1, name: "测试数据1" }
+  }
+  </script>
+  <style>
+  div.graph {
+    width: 400px;
+    height: 300px;
+    border: 1px dashed gainsboro;
+  }
+  </style>
+</head>
+
+<body>
+  <!--  <h3>饼图1</h3>
+  <div id="pie1" class="graph"></div>
+  <hr>
+  <h3>饼图2</h3>
+  <div id="pie2" class="graph"></div>
+  <hr>
+  <h3>饼图3</h3>
+  <div id="pie3" class="graph"></div>
+  <hr> -->
+  <h3>饼图4</h3>
+  <div id="pie4" class="graph"></div>
+  <div id="hover"></div>
+  <hr>
+</body>
+
+</html>

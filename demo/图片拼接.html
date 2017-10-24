@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>图片拼接</title>
+  <style>
+  html {
+    font-size: 100px;
+    font-family: '微软雅黑', 'Arial', 'Helvetica', 'microsoft yahei', 'sans-serif';
+    background: #f2f2f2;
+    height: 100%;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    color: @font-color;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    max-width: 750px;
+    margin: 0 auto;
+    min-height: 100%;
+    min-width: 320px;
+  }
+
+  p {
+    line-height: 1;
+    margin: 0;
+  }
+
+  div {
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+  }
+
+  ul,
+  ul li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  img {
+    border: none
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: normal;
+    line-height: 1;
+  }
+
+  .main {
+    background-color: #fff;
+    position: relative;
+  }
+
+  .main-img {
+    width: 600px;
+    height: 700px;
+  }
+  .left-img{
+  	position: absolute;
+  }
+  </style>
+    <script language="javascript" type="text/javascript" src="http://img3.fdc.com.cn/cms/newindex/new/js/lib/jquery.min.js"></script>
+</head>
+	
+<body>
+  <p class="main" id="main">
+    <img id="myimage" class="main-img" src="img/test.png" alt="">
+    <img id="card-a" class="left-img" src="img/a.png" data-x="100" data-y="310" alt="">
+  </p>
+  <script>
+  var getRealWH = function(myimage) {
+    // var im = document.createElement('img');
+    // im.src = url;
+    // return { width: im.width, height: im.height }
+    var rw, rh;
+    if (typeof myimage.naturalWidth == "undefined") {　　 // IE 6/7/8　
+      var i = new Image();　　
+      i.src = myimage.src;　　
+      rw = i.width;　　
+      rh = i.height;
+    } else {　　 // HTML5 browsers
+      rw = myimage.naturalWidth;　　
+      rh = myimage.naturalHeight;
+    }
+    return { x: rw, y: rh }
+  }
+  var containerImg = document.getElementById("myimage");
+  var bodyImg = getRealWH(containerImg);
+  console.log(bodyImg)
+	var partAImg = getRealWH(document.getElementById("card-a"));
+  console.log(partAImg)
+
+  var ele = $('#card-a');
+  var x = ele.data('x');
+  var y = ele.data('y');
+
+  // var getCardWH = function(){
+
+  // }
+  var xRatio = bodyImg.x / containerImg.offsetWidth;
+  var tempX = x / xRatio;
+  var tempW = partAImg.x / xRatio;
+
+  var yRatio = bodyImg.y / containerImg.offsetHeight;
+  var tempY = y / yRatio;
+  var tempH = partAImg.y / yRatio;
+  console.log('tempX',tempX,'tempW',tempW);
+
+  $('#card-a').css({
+  	left:tempX,
+  	top:tempY,
+  	width:tempW,
+  	height:tempH
+  })
+  </script>
+</body>
+
+</html>
