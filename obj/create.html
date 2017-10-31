@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象创建_create</title>
+</head>
+<body>
+	<script>
+		var obj = Object.create({x:1});
+		console.log('obj.x',obj.x);
+		console.log('typeof obj.toString', typeof obj.toString);
+		console.log('obj.hasOwnProperty("x")', obj.hasOwnProperty('x')) //继承过来的属性，hasOwnProperty返回为false
+
+		var obj2 = Object.create(null);
+		console.log('typeof obj2.toString', typeof obj2.toString);
+	</script>
+</body>
+</html>

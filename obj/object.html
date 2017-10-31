@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>对象操作</title>
+</head>
+
+<body>
+  <p>可以继承原形链上的属性，但是不会修改他，也不能删除他</p>
+  <script>
+  // var obj = {};
+  // obj.x = 1;
+  // obj.y = 2;
+
+  // function foo(){
+
+  // }
+  // foo.prototype.z = 3;
+  // var obj = new foo();
+  // console.log(obj);
+  // 
+  // 
+  function foo() {};
+  foo.prototype.z = 3;
+  var obj = new foo();
+  obj.y = 2;
+  obj.x = 1;
+  console.log('x', obj.x);
+  console.log('y', obj.y)
+  console.log('z', obj.z)
+  console.log('typeof obj.toString', typeof obj.toString)
+  console.log('"z" in obj', 'z' in obj)
+  console.log('obj.hasOwnProperty("z")', obj.hasOwnProperty('z')) //继承过来的属性，hasOwnProperty返回为false
+  obj.z = 5;
+  console.log('foo.prototype.z', foo.prototype.z) //新赋值的属性值不改变原型链上的
+  console.log('obj.z', obj.z)
+  delete obj.z;
+  console.log('delete obj.z-->obj.z', obj.z)
+  </script>
+</body>
+
+</html>
