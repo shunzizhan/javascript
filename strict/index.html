@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>strict</title>
+</head>
+
+<body>
+  <ul>
+    <li>严格模式下禁止使用with</li>
+    <li>不允许未被声明的变量被赋值</li>
+    <li>delete 参数、函数名报错</li>
+    <li>delete不可配置的属性报错</li>
+    <li>对象字面量重复属性名报错</li>
+    <li>禁止八进制字面量</li>
+    <li>eval,arguments变为关键字，不能作为变量函数名</li>
+    <li>eval独立作用域</li>
+  </ul>
+  <script>
+  // 严格模式下禁止使用with
+  ! function() {
+    with({ x: 1 }) {
+      console.log('with', x);
+    }
+  }();
+
+  // ! function() {
+  //   'use strict';
+  //   with({ x: 1 }) {
+  //     console.log('with--strict', x);
+  //   }
+  // }();
+  // 
+  // 不允许未被声明的变量被赋值
+  ! function() {
+    x = 1;
+    console.log('未被声明的变量', window.x);
+  }();
+
+  // ! function() {
+  //   'use strict';
+  //   x = 1;
+  //   console.log('未被声明的变量--strict', window.x);
+  // }();
+  // 
+  // delete 参数、函数名报错
+  ! function(a) {
+    console.log('delete 参数、函数名报错', delete a);
+  }(1);
+
+  // ! function(a) {
+  // 	'use strict';
+  //   console.log('delete 参数、函数名报错--strict', delete a);
+  // }(1);
+  </script>
+</body>
+
+</html>
