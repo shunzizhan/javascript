@@ -1,1 +1,1 @@
-console.log('core.js');
+console.log('core.js222');
