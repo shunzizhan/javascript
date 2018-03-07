@@ -138,6 +138,7 @@
   alert(msg.startWith('hell'));
 ```
 
+
 7.问题：省略构造函数传递参数，所有实例默认情况下取得相同的属性值，最大问题是共享的本质引起
 ```javascript
   function Person (argument) {
