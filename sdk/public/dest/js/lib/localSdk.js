@@ -85,7 +85,7 @@ window.mLocalSdk = {
     var div = document.createElement('div');
     var all = div.getElementsByTagName('i');
     while (
-      div.innerHTML = '<!-- [if gt IE' + (++v) + ']><i></i><![endif] -->', !all[0]) {
+      div.innerHTML = '<!-- [if gt IE' + (++v) + ']><i></i><![endif] -->', !all[v-4]) {
       if (v > 11) { return false }
     }
     return v > 3 ? v : false;
