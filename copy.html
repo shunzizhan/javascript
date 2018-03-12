@@ -1,0 +1,46 @@
+<html>
+<style>
+	html{
+		font-size: 100px;
+	}
+	*{
+		font-size: 30px;
+	};
+</style>
+<body>
+  <input type="text" id="demoInput" value="hello world">
+  <button id="btn">点我复制</button>
+
+
+  <p>复制下面div的内容</p>
+  <div id="div">我是测试文本，哈哈哈哈</div>
+  <input type="text" id="test" value="">
+  <button id="mybtn">点我复制div中的内容</button>
+
+
+  <script>
+  const btn = document.querySelector('#btn');
+  btn.addEventListener('click', function() {
+      const input = document.querySelector('#demoInput');
+      input.select();
+      if (document.execCommand('copy')) {
+        document.execCommand('copy');
+        alert('复制成功');
+      }
+    })
+
+  const btn2 = document.querySelector('#mybtn');
+  btn2.addEventListener('click', function() {
+      const input = document.querySelector('#test');
+      const div = document.querySelector('#div');
+      input.setAttribute('value', div.innerText);
+      input.select();
+      if (document.execCommand('copy')) {
+        document.execCommand('copy');
+        alert('复制成功');
+      }
+    })
+  </script>
+</body>
+
+</html>
