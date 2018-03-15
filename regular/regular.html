@@ -41,5 +41,12 @@
   'a1b2c3d4'.replace(/\d/g,function(childstr,index,str){
   return parseInt(childstr)+1;
   })
+
+  var str = '123456789';
+  var arr = str.match(/\d{4}/g);
+  var lastStr = str.replace(arr.join(""),"");
+  arr.push(lastStr);
+  var _str = arr.join(',') //"1234,5678,9"
+
 </script>
 </html>

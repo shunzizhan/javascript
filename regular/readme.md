@@ -234,6 +234,13 @@ regexp是否具有标志g对结果影响很大
 示例：将`123456789`，变成123 456 789 
   > '123456789'.match(/\d{3}/g)
   > ["123", "456", "789"]
+```
+  var str = '123456789';
+  var arr = str.match(/\d{4}/g);
+  var lastStr = str.replace(arr.join(""),"");
+  arr.push(lastStr);
+  var _str = arr.join(',') //"1234,5678,9"
+```
 
 全局
 具有g标志，执行全局检索，找到字符串中所有匹配子字符串
